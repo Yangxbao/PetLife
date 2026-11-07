@@ -1,0 +1,56 @@
+name: "🐞 Bug 反馈"
+description: "报告一个可以复现的问题"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "感谢反馈！请尽量填写完整——信息越全，修复越快。"
+  - type: dropdown
+    id: module
+    attributes:
+      label: 问题模块
+      options:
+        - 宠物形象 / 动画
+        - 对话 / 台词
+        - 使用时长统计
+        - 学习任务 / 奖励领取
+        - 娱乐限额 / 自律评分
+        - 签到 / 喂食 / 背包
+        - 统计页面
+        - 天气功能
+        - 设置 / 权限
+        - 其他
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 设备与系统版本
+      placeholder: "例：realme GT8 / Android 16 / realme UI 7.0"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本
+      placeholder: "例：v1.2.3（设置页关于可查）"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: "1. 打开…\n2. 点击…\n3. 发生…"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望表现与实际表现
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 诊断信息（可选但强烈建议）
+      description: "闪退请粘贴 设置 → 🩺使用时长诊断 → 查看崩溃日志 的内容；时长问题请附诊断卡截图"

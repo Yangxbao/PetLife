@@ -1,0 +1,39 @@
+name: "💡 功能提议"
+description: "提议一个新功能或改进"
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你想要什么功能？
+      description: "描述得越具体越好，有参考截图/手绘更佳"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 相关领域
+      options:
+        - 宠物形象 / 表情 / 动作
+        - 对话 / 话术
+        - 数值系统（成长系数/自律评分）
+        - 新玩法（小部件/换装/成就…）
+        - 界面 / 视觉
+        - 性能 / 兼容性
+        - 其他
+    validations:
+      required: true
+  - type: checkboxes
+    id: values
+    attributes:
+      label: 请确认你的提议符合产品三原则
+      options:
+        - label: 温和 —— 不引入惩罚致死、清零或焦虑机制
+        - label: 透明 —— 结果可解释，用户知道为什么
+        - label: 精致 —— 体验有生命感，不做工具味的功能
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: 你愿意参与实现吗？
+      options:
+        - label: "愿意！希望成为共创者（维护者会协助你上手）"
