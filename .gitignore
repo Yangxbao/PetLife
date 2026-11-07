@@ -1,0 +1,15 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+app/build/
+
+# 签名密钥不公开
+petlife-release.jks
+*.jks
+*.keystore

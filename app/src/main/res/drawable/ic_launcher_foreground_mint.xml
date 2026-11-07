@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 薄荷色皮可：圆球宠物，呆毛 + 大眼睛 + 腮红 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#9ADBB9"
+        android:pathData="M54,54 m-26,0 a26,26 0 1,0 52,0 a26,26 0 1,0 -52,0" />
+    <path
+        android:fillColor="#D8F3E0"
+        android:pathData="M54,42 m-18,0 a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0" />
+    <path
+        android:strokeColor="#5FA986"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,28 C54,22 50,20 49,16" />
+    <path
+        android:fillColor="#3D2E20"
+        android:pathData="M45,54 m-3.4,0 a3.4,3.4 0 1,0 6.8,0 a3.4,3.4 0 1,0 -6.8,0" />
+    <path
+        android:fillColor="#3D2E20"
+        android:pathData="M63,54 m-3.4,0 a3.4,3.4 0 1,0 6.8,0 a3.4,3.4 0 1,0 -6.8,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M46.2,52.8 m-1.1,0 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M64.2,52.8 m-1.1,0 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0" />
+    <path
+        android:fillColor="#FFAB91"
+        android:pathData="M39,60 m-2.6,0 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0" />
+    <path
+        android:fillColor="#FFAB91"
+        android:pathData="M69,60 m-2.6,0 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0" />
+    <path
+        android:strokeColor="#3D2E20"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:pathData="M50,61 Q54,65 58,61" />
+</vector>
