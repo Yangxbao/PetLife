@@ -105,6 +105,37 @@ cd PetLife
 - 需要 JDK 17 与 Android SDK（compileSdk 35）
 - 签名密钥 `petlife-release.jks` 不随仓库分发；无密钥时 release 以未签名形式构建，debug 可完整体验
 
+## 🤝 参与共建 · Contributors Wanted
+
+这是一个**独立开发者的业余项目**，但我非常希望它能长成一群人共同呵护的作品。
+**欢迎任何人成为共创者**——不管你会不会写代码：
+
+<table>
+  <tr>
+    <td width="33%" valign="top"><b>✍️ 不写代码也能帮</b><br/>提 Bug、写使用心得、补充话术 JSON、纠正错别字、翻译界面、给角色设计提意见</td>
+    <td width="33%" valign="top"><b>🧩 适合练手的 PR</b><br/>新增台词 / 新表情参数 / 新动作剪辑 / 图表美化 / 数值公式文档化——仓库里有完整测试与注释兜底，放心动手</td>
+    <td width="33%" valign="top"><b>🚀 想挑大梁的方向</b><br/>桌面小部件 · 换装系统 · 多语言 · 说话口型联动 · 本地 AI 对话（BYOK）· CI 流水线</td>
+  </tr>
+</table>
+
+**如何开始**：阅读 [CONTRIBUTING.md](CONTRIBUTING.md)（含新手任务清单与环境搭建），
+在 [Issue 列表](../../issues) 挑一个 `good first issue`，或直接开一个新 Issue 聊聊你的想法。
+PR 合并后你会出现在下面的贡献者名单里。
+
+### 🌷 贡献者
+
+<!-- 将由 all-contributors / PR 记录持续更新 -->
+*期待第一个名字是你。*
+
+### 🗺️ Roadmap
+
+- [ ] 桌面小部件：宠物常驻桌面（呼声最高）
+- [ ] 换装系统：多套女仆装 / 皮肤主题
+- [ ] 说话口型联动动画
+- [ ] 多语言界面（en / ja）
+- [ ] 宠物性格分化（基于行为流水的性格参数）
+- [ ] GitHub Actions CI（构建 + 测试 + Release 自动发 APK）
+
 ## ⭐ 如果你喜欢这个项目
 
 给个 Star 就是给小毛球喂了一颗小苹果 🍎
