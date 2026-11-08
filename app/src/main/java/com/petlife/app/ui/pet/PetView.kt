@@ -28,7 +28,9 @@ import com.petlife.app.data.model.PetStage
 import com.petlife.app.ui.pet.character.Expression
 import com.petlife.app.ui.pet.character.Faces
 import com.petlife.app.ui.pet.character.MaidPose
+import com.petlife.app.ui.pet.character.MaidAsset
 import com.petlife.app.ui.pet.character.MaidStageVisuals
+import com.petlife.app.ui.pet.character.drawImageMaid
 import com.petlife.app.ui.pet.character.applyMaidAction
 import com.petlife.app.ui.pet.character.drawMaidCharacter
 import kotlinx.coroutines.CoroutineScope
@@ -84,6 +86,11 @@ fun PetView(
     // ★ 必须用带 MonotonicFrameClock 的组合作用域启动 animateTo，
     //   Dispatchers.Main 裸作用域会导致 IllegalStateException（真机闪退根因）
     val gazeScope = rememberCoroutineScope()
+
+    // 图片立绘素材（v1.3.0）：存在则用图片模式，否则回退程序化立绘
+    val maidContext = androidx.compose.ui.platform.LocalContext.current
+    val maidSprite = remember { MaidAsset.loadSprite(maidContext) }
+    val maidAnchor = remember { MaidAsset.loadAnchor(maidContext) }
 
     // 待机微动作调度：4~9 秒随机一个小动作（不与对话耦合）
     LaunchedEffect(enableIdleMicro) {
@@ -146,7 +153,10 @@ fun PetView(
         Canvas(modifier = Modifier.fillMaxSize()) {
             // 绘制层兜底：任何一帧异常都不允许杀死进程（记录日志并跳过该帧）
             val drew = runCatching {
-                drawPetContent(config, actor, breathValue, blink.value, gazeX.value, gazeY.value, particles, particleProgress.value)
+                drawPetContent(
+                    config, actor, breathValue, blink.value, gazeX.value, gazeY.value,
+                    particles, particleProgress.value, maidSprite, maidAnchor,
+                )
             }
             drew.onFailure {
                 android.util.Log.e("PetLifeCrash", "宠物绘制异常（已跳过该帧）", it)
@@ -164,6 +174,8 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawPetContent(
     gazeY: Float,
     particles: List<Particle>,
     particleT: Float,
+    sprite: androidx.compose.ui.graphics.ImageBitmap?,
+    anchor: com.petlife.app.ui.pet.character.FaceAnchor?,
 ) {
     run {
             val t = actor.progress()
@@ -185,13 +197,28 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawPetContent(
                 }
             }
 
-            drawMaidCharacter(
-                stage = config.stage,
-                growthT = config.growthT,
-                expression = Faces.fromAction(actor.action) ?: Faces.fromMood(config.mood, config.annoyed),
-                pose = pose,
-                timeMs = System.currentTimeMillis(),
-            )
+            // v1.3.0：优先图片立绘模式（素材缺失时回退程序化立绘）
+            val expression = Faces.fromAction(actor.action) ?: Faces.fromMood(config.mood, config.annoyed)
+            if (sprite != null && anchor != null) {
+                drawImageMaid(
+                    base = sprite,
+                    anchor = anchor,
+                    stage = config.stage,
+                    growthT = config.growthT,
+                    expression = expression,
+                    pose = pose,
+                    timeMs = System.currentTimeMillis(),
+                    annoyed = config.annoyed,
+                )
+            } else {
+                drawMaidCharacter(
+                    stage = config.stage,
+                    growthT = config.growthT,
+                    expression = expression,
+                    pose = pose,
+                    timeMs = System.currentTimeMillis(),
+                )
+            }
 
             // 吃东西：嘴边食物缩小
             if (actor.action == PetAction.EAT && t < 0.85f) {

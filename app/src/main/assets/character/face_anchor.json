@@ -1,0 +1,40 @@
+{
+ "sprite": "maid_base.png",
+ "sprite_w": 863,
+ "sprite_h": 1024,
+ "eye_l": {
+  "x": 0.4,
+  "y": 0.315
+ },
+ "eye_r": {
+  "x": 0.615,
+  "y": 0.31
+ },
+ "mouth": {
+  "x": 0.505,
+  "y": 0.39
+ },
+ "face_cx": 0.5,
+ "face_cy": 0.335,
+ "eye_dx": 0.107,
+ "eye_w": 0.1,
+ "eye_h": 0.045,
+ "patch": {
+  "cx": 0.5,
+  "cy": 0.335,
+  "rx": 0.24,
+  "ry": 0.075
+ },
+ "blush_dx": 0.12,
+ "skin": [
+  255,
+  233,
+  222
+ ],
+ "stage_scale": {
+  "BABY": 0.9,
+  "GROWING": 0.96,
+  "ADULT": 1.0,
+  "EVOLVED": 1.05
+ }
+}
