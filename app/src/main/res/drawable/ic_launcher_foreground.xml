@@ -1,47 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 皮可：奶油色圆球宠物，呆毛 + 大眼睛 + 腮红 -->
+<!-- 星伴 v1.3.1 图标：Q 版女仆少女（蓝色渐变发 + 褶边头饰 + 大蓝眼 + 围裙） -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- 身体 -->
+
+    <!-- 背景：暖奶油色圆 -->
     <path
-        android:fillColor="#FFD98E"
-        android:pathData="M54,52 m-26,0 a26,26 0 1,0 52,0 a26,26 0 1,0 -52,0" />
+        android:fillColor="#FFF4E6"
+        android:pathData="M54,54 m-40,0 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0" />
+
+    <!-- === 后发（深蓝渐变，大波浪） === -->
     <path
-        android:fillColor="#FFEBC2"
-        android:pathData="M54,40 m-18,0 a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0" />
-    <!-- 呆毛 -->
+        android:fillColor="#3B5BA5"
+        android:pathData="M54,20 C40,20 28,32 26,48 C24,62 26,78 30,88 C32,92 36,90 36,85 L36,50 C36,42 42,30 54,30 C66,30 72,42 72,50 L72,85 C72,90 76,92 78,88 C82,78 84,62 82,48 C80,32 68,20 54,20 Z" />
+    <!-- 后发亮层 -->
     <path
-        android:strokeColor="#E8A15C"
-        android:strokeWidth="3"
-        android:strokeLineCap="round"
-        android:pathData="M54,26 C54,20 50,18 49,14" />
-    <!-- 眼睛 -->
+        android:fillColor="#4770BF"
+        android:pathData="M54,24 C42,24 32,36 30,50 C28,64 30,76 34,84 C35,86 38,85 38,82 L38,52 C38,44 44,34 54,34 C64,34 70,44 70,52 L70,82 C70,85 73,86 74,84 C78,76 80,64 78,50 C76,36 66,24 54,24 Z" />
+
+    <!-- === 脸部 === -->
     <path
-        android:fillColor="#3D2E20"
-        android:pathData="M45,52 m-3.4,0 a3.4,3.4 0 1,0 6.8,0 a3.4,3.4 0 1,0 -6.8,0" />
+        android:fillColor="#FFEDE0"
+        android:pathData="M54,26 C44,26 36,32 36,42 C36,52 42,60 48,63 C50,64 52,64 54,64 C56,64 58,64 60,63 C66,60 72,52 72,42 C72,32 64,26 54,26 Z" />
+
+    <!-- === 刘海（M形碎发） === -->
     <path
-        android:fillColor="#3D2E20"
-        android:pathData="M63,52 m-3.4,0 a3.4,3.4 0 1,0 6.8,0 a3.4,3.4 0 1,0 -6.8,0" />
+        android:fillColor="#3B5BA5"
+        android:pathData="M34,38 C34,28 42,20 54,20 C66,20 74,28 74,38 L74,34 C74,30 70,26 66,28 L64,32 L60,26 L56,30 L54,25 L50,30 L46,26 L42,32 L40,28 C36,26 34,30 34,34 Z" />
+    <!-- 刘海亮层 -->
+    <path
+        android:fillColor="#4770BF"
+        android:pathData="M36,36 C36,28 44,22 54,22 C64,22 72,28 72,36 L72,33 C72,29 68,25 64,27 L62,30 L58,25 L54,28 L52,25 L48,28 L44,27 L42,30 C38,28 36,30 36,33 Z" />
+
+    <!-- === 鳍状侧发 === -->
+    <path
+        android:fillColor="#54AEE8"
+        android:pathData="M32,40 C28,38 24,40 22,44 C20,48 22,52 26,54 L30,52 Z" />
+    <path
+        android:fillColor="#54AEE8"
+        android:pathData="M76,40 C80,38 84,40 86,44 C88,48 86,52 82,54 L78,52 Z" />
+
+    <!-- === 眼睛 === -->
+    <!-- 左眼 -->
+    <path
+        android:fillColor="#1E3F8F"
+        android:pathData="M43,48 C43,44 46,42 49,42 C52,42 55,44 55,48 C55,52 52,55 49,55 C46,55 43,52 43,48 Z" />
+    <path
+        android:fillColor="#58B8F0"
+        android:pathData="M44,50 C44,47 46,45 49,45 C52,45 54,47 54,50 C54,53 52,54 49,54 C46,54 44,53 44,50 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M46.2,50.8 m-1.1,0 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0" />
+        android:pathData="M46,46 C46,45 47,44 48,44 C49,44 50,45 50,46 C50,47 49,47 48,47 C47,47 46,47 46,46 Z" />
+    <!-- 右眼 -->
+    <path
+        android:fillColor="#1E3F8F"
+        android:pathData="M53,48 C53,44 56,42 59,42 C62,42 65,44 65,48 C65,52 62,55 59,55 C56,55 53,52 53,48 Z" />
+    <path
+        android:fillColor="#58B8F0"
+        android:pathData="M54,50 C54,47 56,45 59,45 C62,45 64,47 64,50 C64,53 62,54 59,54 C56,54 54,53 54,50 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M64.2,50.8 m-1.1,0 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0" />
-    <!-- 腮红 -->
+        android:pathData="M56,46 C56,45 57,44 58,44 C59,44 60,45 60,46 C60,47 59,47 58,47 C57,47 56,47 56,46 Z" />
+
+    <!-- === 嘴巴（微微一笑） === -->
     <path
-        android:fillColor="#FFAB91"
-        android:pathData="M39,58 m-2.6,0 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0" />
-    <path
-        android:fillColor="#FFAB91"
-        android:pathData="M69,58 m-2.6,0 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0" />
-    <!-- 微笑 -->
-    <path
-        android:strokeColor="#3D2E20"
-        android:strokeWidth="2.2"
+        android:fillColor="#8A4A52"
+        android:pathData="M50,58 C50,58 52,61 54,61 C56,61 58,58 58,58"
+        android:strokeColor="#8A4A52"
+        android:strokeWidth="1.5"
         android:strokeLineCap="round"
-        android:pathData="M50,59 Q54,63 58,59" />
+        android:fillAlpha="0" />
+
+    <!-- === 腮红 === -->
+    <path
+        android:fillColor="#FFB3AD"
+        android:fillAlpha="0.5"
+        android:pathData="M40,54 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+    <path
+        android:fillColor="#FFB3AD"
+        android:fillAlpha="0.5"
+        android:pathData="M68,54 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+
+    <!-- === 女仆头饰（白色褶边） === -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#E6ECF6"
+        android:strokeWidth="0.8"
+        android:pathData="M36,26 C36,20 42,16 48,15 L50,18 C46,18 40,20 38,24 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#E6ECF6"
+        android:strokeWidth="0.8"
+        android:pathData="M72,26 C72,20 66,16 60,15 L58,18 C62,18 68,20 70,24 Z" />
+    <!-- 头饰中心褶边 -->
+    <path
+        android:fillColor="#F6F9FF"
+        android:pathData="M42,18 C44,14 50,12 54,12 C58,12 64,14 66,18 C64,20 62,19 60,18 C56,16 50,16 46,18 C44,19 42,19 42,18 Z" />
+
+    <!-- === 侧发蝴蝶结（蓝色） === -->
+    <path
+        android:fillColor="#5B9FE0"
+        android:pathData="M68,34 L74,30 L74,38 Z" />
+    <path
+        android:fillColor="#5B9FE0"
+        android:pathData="M74,34 L80,30 L80,38 Z" />
+    <circle
+        android:fillColor="#3B5BA5"
+        android:pathData="M74,34 m-1.5,0 a1.5,1.5 0 1,0 3,0 a1.5,1.5 0 1,0 -3,0" />
+
+    <!-- === 女服领口 + 宝石 === -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,64 L54,70 L64,64 L64,68 L54,74 L44,68 Z" />
+    <path
+        android:fillColor="#E8C46B"
+        android:pathData="M54,70 m-2.5,0 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0" />
+    <path
+        android:fillColor="#4FA8E8"
+        android:pathData="M54,70 m-1.8,0 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0" />
+
 </vector>
