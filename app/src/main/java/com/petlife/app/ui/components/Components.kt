@@ -46,7 +46,7 @@ import com.petlife.app.ui.theme.WarnRed
 @Composable
 fun PetCard(
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit,
+    content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit,
 ) {
     Card(
         modifier = modifier,
@@ -54,7 +54,8 @@ fun PetCard(
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.padding(16.dp)) { content() }
+        // 注意必须是 Column：此前为 Box，卡片内并列子元素会全部堆叠在同一位置
+        androidx.compose.foundation.layout.Column(Modifier.padding(16.dp), content = content)
     }
 }
 

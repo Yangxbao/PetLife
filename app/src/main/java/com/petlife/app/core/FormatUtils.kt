@@ -4,23 +4,14 @@ import java.util.Locale
 
 object FormatUtils {
 
-    /** 分钟数 → "1小时23分" / "45分钟" / "0分钟" */
-    fun minutesHuman(minutes: Long): String {
-        val m = minutes.coerceAtLeast(0)
-        return if (m >= 60) {
-            val h = m / 60
-            val mm = m % 60
-            if (mm == 0L) "${h}小时" else "${h}小时${mm}分"
-        } else {
-            "${m}分钟"
-        }
-    }
+    /**
+     * 时长统一展示为纯分钟数字（用户明确要求全站一致，不使用"X小时X分"或"HH:MM"）。
+     * 例：0 → "0分钟"，45 → "45分钟"，204 → "204分钟"
+     */
+    fun minutesHuman(minutes: Long): String = "${minutes.coerceAtLeast(0)}分钟"
 
-    /** 分钟数 → "02:15" */
-    fun minutesClock(minutes: Long): String {
-        val m = minutes.coerceAtLeast(0)
-        return "%02d:%02d".format(Locale.US, m / 60, m % 60)
-    }
+    /** 兼容旧调用：统一走向纯分钟格式 */
+    fun minutesClock(minutes: Long): String = minutesHuman(minutes)
 
     fun percent(v: Float): String = "${(v * 100).toInt()}%"
 
