@@ -31,7 +31,7 @@ class DialogueScheduler(
 
         val RULES: Map<String, Rule> = mapOf(
             "TAP" to Rule(1, 12_000),
-            "CHAT" to Rule(1, 120_000),
+            "CHAT" to Rule(1, IDLE_CHAT_GAP_MS),
             "HAPPY" to Rule(1, 90_000),
             "LONELY" to Rule(2, 0),
             "GREET" to Rule(2, 30_000),
@@ -45,7 +45,11 @@ class DialogueScheduler(
             "EVOLVE" to Rule(4, 0),
         )
 
-        const val TAP_PROBABILITY = 0.22f
+        // v1.3.0：主动性提升（用户反馈"不点就像哑巴"）
+        const val TAP_PROBABILITY = 0.42f
+        const val IDLE_CHAT_GAP_MS = 75_000L
+        /** 前台闲置多久后触发一次想念/闲聊 */
+        const val SESSION_IDLE_MS = 15 * 60_000L
     }
 
     private var lastAnyAt = 0L
