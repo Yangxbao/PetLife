@@ -285,7 +285,7 @@ private fun LearnTaskCard(app: MonitoredAppEntity, usedMinutes: Long, claimed: B
             Column(Modifier.weight(1f)) {
                 Text(app.appName, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Ink, maxLines = 1)
                 Text(
-                    "${FormatUtils.minutesClock(usedMinutes)} / $target 分钟",
+                    "已学 ${FormatUtils.minutesHuman(usedMinutes)} / 目标 ${target}分钟",
                     fontSize = 13.sp, color = InkSecondary,
                 )
                 Spacer(Modifier.height(8.dp))
@@ -332,7 +332,7 @@ private fun FunLimitCard(app: MonitoredAppEntity, usedMinutes: Long) {
             Column(Modifier.weight(1f)) {
                 Text(app.appName, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Ink, maxLines = 1)
                 Text(
-                    "${FormatUtils.minutesClock(usedMinutes)} / 限额 $limit 分钟",
+                    "已用 ${FormatUtils.minutesHuman(usedMinutes)} / 限额 ${limit}分钟",
                     fontSize = 13.sp, color = InkSecondary,
                 )
                 Spacer(Modifier.height(8.dp))

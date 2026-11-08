@@ -575,7 +575,7 @@ private fun AppMiniRow(app: MonitoredAppEntity, usedMinutes: Long) {
         }
         Spacer(Modifier.size(10.dp))
         Text(
-            if (isLearn) "${FormatUtils.minutesClock(usedMinutes)}/${target}min"
+            if (isLearn) "已学 ${usedMinutes}/${target}分钟"
             else if (usedMinutes > target) "超标${usedMinutes - target}分"
             else "剩${(target - usedMinutes).coerceAtLeast(0)}分",
             fontSize = 12.sp,

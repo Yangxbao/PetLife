@@ -55,46 +55,52 @@ fun applyMaidAction(pose: MaidPose, action: com.petlife.app.ui.pet.PetAction, t:
     val s = sin(PI * t).toFloat()
     when (action) {
         com.petlife.app.ui.pet.PetAction.HAPPY_BOUNCE -> {
-            pose.jump = -abs(sin(PI * t * 2).toFloat()) * 0.05f
-            pose.legLift = abs(sin(PI * t * 2).toFloat()) * 0.5f
-            pose.hairSway = 1.5f
+            pose.jump = -abs(sin(PI * t * 2).toFloat()) * 0.07f
+            pose.legLift = abs(sin(PI * t * 2).toFloat()) * 0.75f
+            pose.hairSway = 2.0f
+            pose.armPose = ArmPose.UP
         }
         com.petlife.app.ui.pet.PetAction.JUMP -> {
-            pose.jump = -sin(PI * t).toFloat() * 0.09f
-            pose.legLift = sin(PI * t).toFloat() * 0.7f
+            pose.jump = -sin(PI * t).toFloat() * 0.12f
+            pose.legLift = sin(PI * t).toFloat() * 0.9f
+            pose.armPose = ArmPose.UP
         }
         com.petlife.app.ui.pet.PetAction.SPIN, com.petlife.app.ui.pet.PetAction.TURN -> {
             pose.turn = t
-            pose.jump = -abs(sin(PI * t * 2).toFloat()) * 0.03f
-            pose.hairSway = 1.8f
+            pose.jump = -abs(sin(PI * t * 2).toFloat()) * 0.045f
+            pose.hairSway = 2.2f
+            pose.armPose = ArmPose.UP
         }
         com.petlife.app.ui.pet.PetAction.SHY_COVER -> {
             pose.armPose = ArmPose.COVER
-            pose.headTilt = s * 8f
-            pose.headDx = -0.04f * s
-            pose.lean = -0.3f * s
+            pose.headTilt = s * 12f
+            pose.headDx = -0.06f * s
+            pose.lean = -0.45f * s
             pose.hairSway = 0.5f
         }
         com.petlife.app.ui.pet.PetAction.PUFF, com.petlife.app.ui.pet.PetAction.PUFF_AKIMBO -> {
             pose.armPose = ArmPose.AKIMBO
-            pose.headTilt = -s * 4f
-            pose.bodyTilt = sin(PI * t * 3).toFloat() * 1.5f
+            pose.headTilt = -s * 7f
+            pose.bodyTilt = sin(PI * t * 3).toFloat() * 3.5f
+            pose.legLift = 0.25f
         }
         com.petlife.app.ui.pet.PetAction.SMUG_AKIMBO -> {
             pose.armPose = ArmPose.AKIMBO
-            pose.headTilt = s * 6f
+            pose.headTilt = s * 10f
+            pose.bodyTilt = sin(PI * t * 2).toFloat() * 2.5f
         }
         com.petlife.app.ui.pet.PetAction.UPSET_DOWN -> {
-            pose.headDy = 0.05f * s.coerceAtLeast(0.3f)
-            pose.headTilt = 6f
-            pose.slump = 0.6f * s
+            pose.headDy = 0.08f * s.coerceAtLeast(0.3f)
+            pose.headTilt = 10f
+            pose.slump = 0.85f * s
             pose.hairSway = 0.3f
         }
         com.petlife.app.ui.pet.PetAction.SPOILED -> {
-            pose.headTilt = sin(PI * t * 2).toFloat() * 7f
-            pose.headDx = 0.05f
-            pose.lean = 0.35f * s
-            pose.armPose = ArmPose.DOWN
+            pose.headTilt = sin(PI * t * 2).toFloat() * 11f
+            pose.headDx = 0.07f
+            pose.lean = 0.55f * s
+            pose.armPose = ArmPose.COVER
+            pose.hairSway = 1.6f
         }
         com.petlife.app.ui.pet.PetAction.YAWN -> {
             pose.mouthOpen = s
@@ -108,16 +114,17 @@ fun applyMaidAction(pose: MaidPose, action: com.petlife.app.ui.pet.PetAction, t:
         }
         com.petlife.app.ui.pet.PetAction.EAT -> {
             val chew = abs(sin(PI * t * 6).toFloat())
-            pose.headDy = 0.06f + chew * 0.012f
-            pose.headTilt = 10f
+            pose.headDy = 0.08f + chew * 0.015f
+            pose.headTilt = 14f
             pose.mouthOpen = chew
             pose.armPose = ArmPose.REACH
+            pose.hairSway = 1.3f
         }
         com.petlife.app.ui.pet.PetAction.CELEBRATE, com.petlife.app.ui.pet.PetAction.CHEER -> {
             pose.armPose = ArmPose.CHEER
-            pose.jump = -abs(sin(PI * t * 3).toFloat()) * 0.06f
-            pose.legLift = abs(sin(PI * t * 3).toFloat()) * 0.4f
-            pose.hairSway = 1.8f
+            pose.jump = -abs(sin(PI * t * 3).toFloat()) * 0.09f
+            pose.legLift = abs(sin(PI * t * 3).toFloat()) * 0.65f
+            pose.hairSway = 2.4f
         }
         com.petlife.app.ui.pet.PetAction.LEVELUP, com.petlife.app.ui.pet.PetAction.EVOLVE, com.petlife.app.ui.pet.PetAction.GROWTH_POSE -> {
             pose.armPose = ArmPose.UP
@@ -130,24 +137,38 @@ fun applyMaidAction(pose: MaidPose, action: com.petlife.app.ui.pet.PetAction, t:
             pose.headTilt = sin(PI * t * 2).toFloat() * 5f
         }
         com.petlife.app.ui.pet.PetAction.HAPPY_BOUNCE, com.petlife.app.ui.pet.PetAction.HAPPY_SHAKE -> {
-            pose.bodyTilt = sin(PI * t * 3).toFloat() * 4f
-            pose.headTilt = sin(PI * t * 3 + 0.6f).toFloat() * 5f
-            pose.hairSway = 1.7f
-            pose.jump = -abs(sin(PI * t * 2).toFloat()) * 0.025f
+            pose.bodyTilt = sin(PI * t * 3).toFloat() * 7f
+            pose.headTilt = sin(PI * t * 3 + 0.6f).toFloat() * 9f
+            pose.hairSway = 2.4f
+            pose.jump = -abs(sin(PI * t * 2).toFloat()) * 0.04f
+            pose.armPose = ArmPose.UP
         }
-        com.petlife.app.ui.pet.PetAction.HEAD_TILT -> pose.headTilt = s * 10f
+        com.petlife.app.ui.pet.PetAction.HEAD_TILT -> {
+            pose.headTilt = s * 14f
+        }
         com.petlife.app.ui.pet.PetAction.LOOK_AROUND -> {
-            pose.headDx = sin(PI * t * 2).toFloat() * 0.06f
-            pose.gazeX = sin(PI * t * 2).toFloat() * 0.8f
+            pose.headDx = sin(PI * t * 2).toFloat() * 0.10f
+            pose.gazeX = sin(PI * t * 2).toFloat() * 0.9f
+            pose.headTilt = sin(PI * t * 2).toFloat() * 4f
         }
         com.petlife.app.ui.pet.PetAction.HAIR_TUCK -> {
             pose.armPose = ArmPose.COVER
             pose.headTilt = -s * 6f
         }
-        com.petlife.app.ui.pet.PetAction.WINK -> pose.headTilt = s * 4f
-        com.petlife.app.ui.pet.PetAction.TAIL_WAG -> pose.tailWave = 2.2f * s.coerceAtLeast(0.5f)
+        com.petlife.app.ui.pet.PetAction.WINK -> {
+            pose.headTilt = s * 6f
+            pose.bodyTilt = s * 2f
+        }
+        com.petlife.app.ui.pet.PetAction.TAIL_WAG -> {
+            pose.tailWave = 3.0f * s.coerceAtLeast(0.6f)
+            pose.bodyTilt = sin(PI * t * 4).toFloat() * 3f
+        }
         com.petlife.app.ui.pet.PetAction.NOD -> pose.headDy = abs(sin(PI * t * 2).toFloat()) * 0.03f
-        com.petlife.app.ui.pet.PetAction.SURPRISED -> pose.headDy = -0.02f * s
+        com.petlife.app.ui.pet.PetAction.SURPRISED -> {
+            pose.headDy = -0.03f * s
+            pose.jump = -sin(PI * t).toFloat() * 0.02f
+            pose.armPose = ArmPose.UP
+        }
         com.petlife.app.ui.pet.PetAction.SLEEP -> {
             pose.headTilt = 10f * t.coerceAtLeast(0.2f)
             pose.headDy = 0.06f * t
@@ -229,10 +250,10 @@ fun DrawScope.drawMaidCharacter(
     translate(headCX, headCY) {
         rotate(pose.headTilt) {
             drawHeadFront(headRx, headRy, unit)
-            // 表情（在刘海之下画眼睛，刘海之后覆盖额头）
-            drawFace(expression, headRx, headRy, unit, pose, timeMs)
-            // 刘海 + 天使环
+            // 刘海 + 天使环（先画：确保眼睛/表情图层在其上方，绝不被遮挡）
             drawBangs(headRx, headRy, unit, pose, timeMs)
+            // 表情（最上层）
+            drawFace(expression, headRx, headRy, unit, pose, timeMs)
             // 侧发髻 + 鳍状侧发（头两侧，压在刘海之上）
             drawSideHair(headRx, headRy, unit, sp, pose, timeMs)
             // 呆毛
@@ -519,7 +540,7 @@ private fun DrawScope.drawBody(cx: Float, neckY: Float, waistY: Float, hemY: Flo
 
 // ---------------- 手臂 ----------------
 private fun DrawScope.drawArms(cx: Float, shoulderY: Float, shoulderDx: Float, waistY: Float, unit: Float, pose: MaidPose, timeMs: Long) {
-    val swing = sin(timeMs / 800.0 * PI).toFloat() * unit * 0.012f * pose.hairSway
+    val swing = sin(timeMs / 650.0 * PI).toFloat() * unit * 0.035f * pose.hairSway
     for (side in listOf(-1f, 1f)) {
         val sx = cx + side * shoulderDx
         val sy = shoulderY + unit * 0.01f
@@ -771,16 +792,16 @@ private fun DrawScope.drawBangs(headRx: Float, headRy: Float, unit: Float, pose:
     val path = Path().apply {
         moveTo(-headRx * 1.00f, topY + headRy * 0.55f)
         // 左侧发际下滑
-        quadraticBezierTo(-headRx * 1.02f + sway, -headRy * 0.1f, -headRx * 0.80f, headRy * 0.28f)
+        quadraticBezierTo(-headRx * 1.02f + sway, -headRy * 0.1f, -headRx * 0.80f, headRy * 0.16f)
         // 五个 M 形尖
         val tips = listOf(
-            -headRx * 0.80f to headRy * 0.28f,
-            -headRx * 0.50f to headRy * 0.02f,
-            -headRx * 0.22f to headRy * 0.34f,
-            headRx * 0.08f to headRy * 0.05f,
-            headRx * 0.38f to headRy * 0.30f,
-            headRx * 0.66f to headRy * 0.02f,
-            headRx * 1.00f to headRy * 0.50f,
+            -headRx * 0.80f to headRy * 0.16f,
+            -headRx * 0.50f to -headRy * 0.06f,
+            -headRx * 0.22f to headRy * 0.20f,
+            headRx * 0.08f to -headRy * 0.03f,
+            headRx * 0.38f to headRy * 0.16f,
+            headRx * 0.66f to -headRy * 0.05f,
+            headRx * 1.00f to headRy * 0.38f,
         )
         for (i in 0 until tips.size - 1) {
             val (x1, y1) = tips[i]
