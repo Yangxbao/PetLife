@@ -69,6 +69,44 @@ class WeatherStore(context: Context, private val service: WeatherService = Weath
             .getOrDefault(emptyList())
     }
 
+    /**
+     * 一键 GPS 定位（v1.3.0）：LocationManager 单次取位（无 GMS 依赖），
+     * 拿到经纬度后直接反查城市名（Android Geocoder，失败则用"我的位置"）。
+     */
+    suspend fun locate(context: Context): Prefs.WeatherCity? = withContext(Dispatchers.IO) {
+        val lm = context.getSystemService(Context.LOCATION_SERVICE) as? android.location.LocationManager
+            ?: return@withContext null
+        var loc: android.location.Location? = null
+        for (p in listOf(android.location.LocationManager.NETWORK_PROVIDER, android.location.LocationManager.GPS_PROVIDER, android.location.LocationManager.PASSIVE_PROVIDER)) {
+            runCatching { lm.getLastKnownLocation(p) }.getOrNull()?.let {
+                if (loc == null || it.accuracy < loc!!.accuracy) loc = it
+            }
+        }
+        if (loc == null) {
+            val latch = java.util.concurrent.CountDownLatch(1)
+            val listener = android.location.LocationListener { l ->
+                if (loc == null) { loc = l; latch.countDown() }
+            }
+            runCatching {
+                for (p in lm.allProviders) {
+                    if (lm.isProviderEnabled(p)) {
+                        lm.requestLocationUpdates(p, 0L, 0f, listener, android.os.Looper.getMainLooper())
+                    }
+                }
+                latch.await(8, java.util.concurrent.TimeUnit.SECONDS)
+            }
+            runCatching { lm.removeUpdates(listener) }
+        }
+        val location = loc ?: run { Log.w(tag, "定位失败：无可用位置"); return@withContext null }
+        Log.i(tag, "定位成功：${location.latitude},${location.longitude}")
+        val displayName = runCatching {
+            android.location.Geocoder(context, java.util.Locale.getDefault())
+                .getFromLocation(location.latitude, location.longitude, 1)
+                ?.firstOrNull()?.locality
+        }.getOrNull() ?: "我的位置"
+        Prefs.WeatherCity(displayName.ifBlank { "我的位置" }, location.latitude, location.longitude)
+    }
+
     suspend fun setCity(city: Prefs.WeatherCity?) {
         prefs.setWeatherCity(city)
         _weather.value = null
